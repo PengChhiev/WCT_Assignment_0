@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lovely Cafe</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* color*/
+:root {
+  --brown-dark:  #3b1f0e;
+  --brown-mid:   #6b3a2a;
+  --brown-warm:  #a0522d;
+  --cream-light: #fdf6ed;
+  --cream-mid:   #f0e0c8;
+  --cream-dark:  #ddc6a8;
+  --gold:        #c8943a;
+  --text-muted:  #7a5c44;
+}
+
+body {
+  font-family: 'Lato', "Times New Roman", Georgia, Serif;
+  background: var(--cream-light);
+  color: var(--brown-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 5px;
+}
+
+/* ── Navbar ── */
+.w3-bar.w3-white {
+  background: var(--brown-dark) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.w3-bar.w3-white a {
+  color: var(--cream-dark) !important;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: color 0.3s;
+}
+.w3-bar.w3-white a:hover {
+  color: var(--gold) !important;
+  background: transparent !important;
+}
+.brand-name {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 1.4rem !important;
+  color: var(--cream-light) !important;
+  font-style: italic;
+}
+.mobile-menu-btn {
+  display: none !important;
+  font-size: 1.4rem !important;
+}
+
+.mobile-nav {
+  display: none;
+  background: var(--brown-dark);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 14px 24px;
+  color: var(--cream-dark);
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.mobile-nav a:hover {
+  color: var(--gold);
+}
+
+.mobile-nav.open {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block !important;
+  }
+}
+/* ── Hero ── */
+#home {
+  background: linear-gradient(135deg, #3b1f0e 0%, #6b3a2a 55%, #a0522d 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px 60px;
+  position: relative;
+  overflow: hidden;
+}
+#home::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 700px; margin: 0 auto;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: #fdf6ed;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  letter-spacing: 3px;
+}
+.hero-title em { color: var(--gold); }
+.hero-sub {
+  font-size: 1.1rem;
+  color: #ddc6a8;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+  font-family: 'Lato', sans-serif;
+}
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff !important;
+  padding: 14px 36px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 6px;
+  transition: all 0.3s;
+  font-family: 'Lato', sans-serif;
+}
+.btn-gold:hover {
+  background: var(--brown-warm);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--cream-dark) !important;
+  padding: 13px 34px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 6px;
+  border: 2px solid var(--cream-dark);
+  transition: all 0.3s;
+  font-family: 'Lato', sans-serif;
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold) !important;
+}
+
+/* ── About (W3 template style) ── */
+#about { background: #fff; }
+#about h1 { color: var(--brown-dark); }
+#about h5 {
+  color: var(--gold);
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+#about p.w3-large { color: var(--text-muted); line-height: 1.9; }
+#about .w3-tag {
+  background: var(--cream-mid) !important;
+  color: var(--brown-warm) !important;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.gold-bar {
+  width: 55px; height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ── Menu (W3 template style + picture side) ── */
+#menu { background: var(--cream-light); }
+#menu h1 { color: var(--brown-dark); }
+#menu h4 {
+  color: var(--brown-mid);
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+#menu p.w3-text-grey { color: var(--text-muted) !important; font-size: 0.92rem; }
+
+/* ── HR divider ── */
+hr { border-color: var(--cream-mid); margin: 0; }
+
+/* ── Contact (version 1 style) ── */
+#contact { background: var(--brown-dark); padding: 80px 16px; }
+#contact h1 { color: var(--cream-light); }
+#contact .contact-desc { color: var(--cream-dark); line-height: 1.8; }
+.contact-address {
+  color: var(--gold) !important;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.contact-info-item {
+  display: flex; gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.contact-icon-box {
+  width: 42px; height: 42px; min-width: 42px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.contact-info-item h4 {
+  color: var(--cream-light);
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.contact-info-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--cream-dark);
+}
+.contact-form-box {
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 2rem;
+}
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cream-dark);
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-family: 'Lato', sans-serif;
+}
+.contact-input {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: var(--cream-light);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+.contact-input::placeholder { color: rgba(255,255,255,0.3); }
+.contact-input:focus { border-color: var(--gold); outline: none; }
+select.contact-input option { background: var(--brown-dark); }
+.btn-send {
+  width: 100%;
+  background: var(--gold);
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  padding: 13px 36px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.3s, transform 0.3s;
+  margin-top: 6px;
+}
+.btn-send:hover {
+  background: var(--brown-warm);
+  transform: translateY(-2px);
+}
+
+/* ── Footer ── */
+footer.w3-light-grey {
+  background: #1a0a03 !important;
+}
+footer.w3-light-grey p { color: var(--text-muted); font-family: 'Lato', sans-serif; font-size: 0.82rem; }
+footer.w3-light-grey a { color: var(--gold) !important; }
+footer.w3-light-grey a:hover { color: var(--cream-light) !important; }
+
+/* ── Hero animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-tag   { animation: fadeUp 0.7s ease 0.1s both; }
+.hero-title { animation: fadeUp 0.7s ease 0.25s both; }
+.hero-sub   { animation: fadeUp 0.7s ease 0.4s both; }
+.hero-btns  { animation: fadeUp 0.7s ease 0.55s both; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .hero-btns a { display: block; margin: 6px auto; max-width: 220px; text-align: center; }
+  .contact-form-box { padding: 1.2rem; }
+}
+</style>
+</head>
+<script>
+function toggleMobileMenu() {
+  document.getElementById("mobileNav").classList.toggle("open");
+}
+</script>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card navbar" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button brand-name">Lovely Cafe</a>
+
+    <button class="w3-bar-item w3-button w3-right mobile-menu-btn"
+            onclick="toggleMobileMenu()"
+            aria-label="Open navigation menu">
+      &#8942;
+    </button>
+
+    <div class="w3-right desktop-nav">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+
+  <div id="mobileNav" class="mobile-nav">
+    <a href="#about" onclick="toggleMobileMenu()">About</a>
+    <a href="#menu" onclick="toggleMobileMenu()">Menu</a>
+    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+  </div>
+</div>
+    <div class="w3-right w3-hide-small">
+      <a href="#about"   class="w3-bar-item w3-button">About</a>
+      <a href="#menu"    class="w3-bar-item w3-button">Menu</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Hero (version 1 style) -->
+<div id="home">
+  <div class="hero-inner">
+    <div class="hero-tag">Est. 2024 &middot; Phnom Penh</div>
+    <h1 class="hero-title">Where Every Sip<br>Feels Like <em>Home</em></h1>
+    <p class="hero-sub">Handcrafted coffee, freshly baked treats, and a warm space to slow down and stay awhile.</p>
+    <div class="hero-btns">
+      <a href="#menu"    class="btn-gold">Explore Menu</a>
+      <a href="#contact" class="btn-outline">Find Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About (version 2 W3 template style) -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+      <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=750&fit=crop"
+           class="w3-round w3-image w3-opacity-min" alt="Lovely Cafe Interior" width="600" height="750">
+    </div>
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">About Lovely Cafe</h1>
+      <div class="gold-bar"></div>
+      <h5 class="w3-center">Est. 2024 &middot; Phnom Penh</h5>
+      <br>
+      <p class="w3-large">Lovely Cafe was born from a simple belief — that a great cup of coffee can change your whole day. We source our beans from local farms, roast them fresh, and brew each cup with care and intention. We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">From our handcrafted espresso to our freshly baked pastries, everything on our menu is made with love and served with a smile. Come as you are — stay as long as you like.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Menu (W3 template style + image on right) -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+      <h1 class="w3-center">Our Menu</h1><br>
+
+      <!-- Hot Drinks -->
+       
+      <h4>Signature Espresso</h4>
+      <img src="./src/images/Espresso Coffee Recipe.jpg" alt="Espresso" style="width: 30%; border-radius:8px; margin: bottom 16px;">      
+      <p class="w3-text-grey">Rich double shot with a rich flavor &middot; $2.50</p><br>
+
+      <h4>Matcha Latte</h4>
+      <img src="./src/images/˚˖𓍢ִ໋🍃✧˚🌴⋆.jpg" alt="Matcha Latte" style="width: 30%; border-radius:8px; margin: bottom 16px;">      
+      <p class="w3-text-grey">Smooth matcha, microfoam, local honey drizzle &middot; $3.75</p><br>
+
+      <h4>Lemon Tea</h4>
+      <img src="src/images/Lemon_Tea_ICE.jpg" alt="Lemon Tea" style="width: 30%; border-radius:8px; margin: bottom 16px;">
+      <p class="w3-text-grey">Lemon with honey, refreshing &middot; $2.50</p><br>
+
+      <!-- Cold Drinks -->
+      <h4>Iced Mocha</h4>
+      <img src="./src/images/How To Make a Copycat McDonald's Mocha Frappe Recipe at Home.jpg" alt="Iced Mocha" style="width: 30%; border-radius:8px; margin: bottom 16px;">
+      <p class="w3-text-grey">Chocolate & Coffee with whipped cream &middot; $3.00</p><br>
+
+      <h4>Rose Cold Brew</h4>
+      <p class="w3-text-grey">Cold brew infused with rose water and cardamom &middot; $4.75</p><br>
+
+      <!-- Pastries -->
+      <h4>Butter Croissant</h4>
+      <p class="w3-text-grey">Flaky, golden, baked fresh every morning &middot; $2.50</p><br>
+
+      <h4>Brown Sugar Cake</h4>
+      <p class="w3-text-grey">Moist slice of our house specialty cake &middot; $3.50</p><br>
+
+      <h4>Chocolate Chip Cookie</h4>
+      <p class="w3-text-grey">Warm, gooey, made with real dark chocolate &middot; $2.00</p>
+    </div>
+
+    <div class="w3-col l6 w3-padding-large">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=700&fit=crop"
+           class="w3-round w3-image w3-opacity-min" alt="Coffee and Pastries" style="width:100%">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contact (version 1 style) -->
+  <div class="w3-container w3-padding-64" id="contact" style="max-width:100%; background:var(--brown-dark);">
+    <div class="w3-content" style="max-width:1100px;">
+      <div class="w3-row-padding">
+
+        <!-- Left info -->
+        <div class="w3-col m6 w3-padding-large">
+          <h1 style="color:var(--cream-light);">Come Say Hello</h1>
+          <div class="gold-bar" style="margin:14px 0 20px;"></div>
+          <p class="contact-desc">We'd love to hear from you. Whether you want to make a reservation, ask about our menu, or just say hello — don't hesitate to reach out.</p>
+          <p class="contact-address w3-large"><b>12 Riverside Blvd, BKK1, Phnom Penh, Cambodia</b></p>
+          <br>
+          <div class="contact-info-item">
+            <div class="contact-icon-box">&#128336;</div>
+            <div>
+              <h4>Opening Hours</h4>
+              <p>Mon &ndash; Fri: 7:00 AM &ndash; 9:00 PM<br>Sat &ndash; Sun: 8:00 AM &ndash; 10:00 PM</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon-box">&#128222;</div>
+            <div>
+              <h4>Phone</h4>
+              <p>+855 12 345 678</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon-box">&#9993;</div>
+            <div>
+              <h4>Email</h4>
+              <p>hello@lovelycafe.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right form -->
+        <div class="w3-col m6 w3-padding-large">
+          <div class="contact-form-box">
+            <p style="color:var(--gold); font-family:'Lato',sans-serif; font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; font-weight:700; margin-bottom:1.2rem;">Send a Message</p>
+            <div class="w3-row-padding">
+              <div class="w3-col s6">
+                <label class="form-label">First Name</label>
+                <input class="contact-input" type="text" placeholder="Your name">
+              </div>
+              <div class="w3-col s6">
+                <label class="form-label">Last Name</label>
+                <input class="contact-input" type="text" placeholder="Last name">
+              </div>
+            </div>
+            <label class="form-label">Email</label>
+            <input class="contact-input" type="email" placeholder="your@email.com">
+            <label class="form-label">Subject</label>
+            <select class="contact-input">
+              <option>General Inquiry</option>
+              <option>Table Reservation</option>
+              <option>Catering &amp; Events</option>
+              <option>Feedback</option>
+            </select>
+            <label class="form-label">Message</label>
+            <textarea class="contact-input" rows="4" placeholder="Tell us anything..."></textarea>
+            <button class="btn-send">Send Message</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <p>&#169; 2024 Lovely Cafe &middot; Phnom Penh, Cambodia &middot; Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+</body>
+</html>
